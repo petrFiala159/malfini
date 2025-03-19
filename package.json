@@ -1,0 +1,32 @@
+{
+  "name": "malfini-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "test": "npx playwright test",
+    "test:ui": "env-cmd -r ./.env-cmdrc.json -e test npx playwright test --ui",
+    "test:debug": "env-cmd -r ./.env-cmdrc.json -e dev npx playwright test --debug",
+    "test:dev": "env-cmd -r ./.env-cmdrc.json -e dev npx playwright test",
+    "test:test": "env-cmd -r ./.env-cmdrc.json -e test npx playwright test",
+    "test:local": "env-cmd -r ./.env-cmdrc.json -e local npx playwright test",
+    "Malfini_tests_PROD": "_____________________________________________________________________________________________________________",
+   
+    "goToMalfiniPageAndCheckListing": "env-cmd -r ./.env-cmdrc.json -e PROD_Malfini npx playwright test malfini_listing_check.spec.ts --headed --project=chromium",
+   
+    "END_Malfini_tests_PROD": "_____________________________________________________________________________________________________________"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.10"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.2",
+    "env-cmd": "^10.1.0"
+  }
+}
