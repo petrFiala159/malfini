@@ -1,7 +1,7 @@
 import { Locator } from "@playwright/test";
 import { BaseElement } from "../base.element";
 
-export class OgdTableRow extends BaseElement {
+export class TableRow extends BaseElement {
     readonly nameCell: Locator;
     readonly statusCell: Locator;
 

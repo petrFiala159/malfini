@@ -1,29 +1,12 @@
 /**
- * Test Scenario: Create a new person (Person erstellen)
- * Jira: https://jira.hbsn-gruppe.com/browse/OGD-5487
- * Zephyr: https://jira.hbsn-gruppe.com/secure/Tests.jspa#/testCase/OGD-T413
+ * Test Scenario: Malfini - Listing Check
+ * Jira: 
+ * Zephyr: 
  *
  * Steps:
  * 1. Navigate to the Personen page.
  *    - Expected Result: Personen page is displayed.
  * 
- * 2. Click the "Person erstellen" button.
- *    - Expected Result: Pop-up for person creation appears.
- * 
- * 3. Verify required fields and elements in the pop-up.
- *    - Expected Result: All required fields are visible.
- * 
- * 4. Generate a random "Vorname" and fill the input field.
- *    - Expected Result: Input field is filled successfully.
- * 
- * 5. Fill out all mandatory fields.
- *    - Expected Result: Fields are populated successfully.
- * 
- * 6. Click the "Erstellen" button.
- *    - Expected Result: New person is created.
- * 
- * 7. Verify the new person in the Personen table.
- *    - Expected Result: New person is listed in the table.
  */
 
 import { test, expect } from '@playwright/test';

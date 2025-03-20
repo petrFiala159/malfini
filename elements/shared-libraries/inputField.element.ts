@@ -44,7 +44,8 @@ export class InputField extends BaseElement {
     }
 
     async getAttribute(name: string, options?: { timeout?: number; }): Promise<string>{
-        return await this.element.getAttribute(name, options)
+        const attribute = await this.element.getAttribute(name, options) ?? '';
+        return attribute;
     }
     async expectToBeDisabled(){
         const elem = this.element

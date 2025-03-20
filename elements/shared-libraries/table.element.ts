@@ -1,8 +1,8 @@
 import { Locator } from "@playwright/test";
 import { BaseElement } from "../base.element";
-import { OgdTableRow } from "./ogdTableRow.element";
+import { TableRow } from "./tableRow.element";
 
-export class OgdTable extends BaseElement {
+export class table extends BaseElement {
 
     constructor(locator: Locator) {
         super(locator);
@@ -10,6 +10,6 @@ export class OgdTable extends BaseElement {
 
     async getRowByName(name: string) {
         const rowElem = this.element.locator(`tr:has-text("${name}")`); 
-        return new OgdTableRow(rowElem);
+        return new TableRow(rowElem);
     }
 }

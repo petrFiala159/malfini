@@ -1,6 +1,5 @@
 import { Page, expect } from "@playwright/test";
 import { Env } from "../utils/env";
-import { waitForRequestToEndpoint } from "./interceptRoutes";
 
 export async function sortDateStringsAsc(dateStrings: string[]): Promise<string[]> {
     // Function to parse date strings into Date objects

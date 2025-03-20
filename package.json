@@ -11,6 +11,7 @@
     "test:dev": "env-cmd -r ./.env-cmdrc.json -e dev npx playwright test",
     "test:test": "env-cmd -r ./.env-cmdrc.json -e test npx playwright test",
     "test:local": "env-cmd -r ./.env-cmdrc.json -e local npx playwright test",
+    
     "Malfini_tests_PROD": "_____________________________________________________________________________________________________________",
     "goToMalfiniPageAndCheckListing": "env-cmd -r ./.env-cmdrc.json -e PROD_Malfini npx playwright test malfini_listing_check.spec.ts --headed --project=chromium",
     "END_Malfini_tests_PROD": "_____________________________________________________________________________________________________________"

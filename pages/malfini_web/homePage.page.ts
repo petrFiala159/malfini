@@ -1,7 +1,7 @@
 /**
- * Page: Google page
- * Screenshot: // [../../screenshots/google.png]
- * Description: google page :).
+ * Page: HomePage
+ * Screenshot: // [../../screenshots/homepage.png]
+ * Description: HomePage of Malfini webpage.
  */
 import { Page, Locator, expect } from '@playwright/test';
 import { Env } from '../../utils/env';
@@ -15,15 +15,13 @@ export class HomePage implements BasePage {
 
     // Main page elements
     readonly createPersonButton: Button; // Create person button (Person erstellen)
-    readonly popupSaveButton: Button; // Save button (Speichern)
-    readonly cancelButton: Button; // Cancel button (Abbrechen)
+
 
 
     constructor(page: Page) {
         this.page = page;
 
-        this.createPersonButton = new Button(page.getByRole('button', { name: 'Person erstellen' }))
-        // Buttons
+        // Elements
         this.popupSaveButton = new Button(page.locator('[data-cy="child-create-save-button"]'));
         this.cancelButton = new Button(page.locator("xpath=//button[starts-with(@id, 'control_cancel_')]")); // Cancel button (Abbrechen)
     }
