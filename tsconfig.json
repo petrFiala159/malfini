@@ -4,7 +4,7 @@
     "module": "commonjs",
     "moduleResolution": "Node",
     "sourceMap": true,
-    "strict": true,
+    "strictPropertyInitialization": false,
     "outDir": "../tests-out"
   }
 }
