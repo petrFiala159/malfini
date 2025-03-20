@@ -1,12 +1,42 @@
 /**
- * Test Scenario: Malfini - Listing Check
+ * Test verifies all main menu sections work correctly
+ *  * Test Scenario: Malfini - Listing Check
  * Jira: 
  * Zephyr: 
- *
+ *  
  * Steps:
- * 1. Navigate to the homepage
- * 2. Check title and URL
- * 3. Navigate to Organic & Recycled section
+ * 1. Check Organic & Recycled section
+ *    - Navigate to the section
+ *    - Verify products are displayed correctly
+ * 
+ * 2. Check T-shirts section  
+ *    - Navigate to the section
+ *    - Verify products are displayed correctly
+ * 
+ * 3. Check Polo shirts section
+ *    - Navigate to the section 
+ *    - Verify products are displayed correctly
+ * 
+ * 4. Check Sweatshirts section
+ *    - Navigate to the section
+ *    - Verify products are displayed correctly
+ * 
+ * 5. Check Fleece section
+ *    - Navigate to the section
+ *    - Verify products are displayed correctly
+ * 
+ * 6. Check Label Free section
+ *    - Navigate to the section
+ *    - Verify products are displayed correctly
+ * 
+ * 7. Check Novelties section
+ *    - Navigate to the section
+ *    - Verify products are displayed correctly
+ * 
+ * 8. Check Other section
+ *    - Hover over Others menu
+ *    - Verify submenu appears
+ *    - Verify all submenu items are present and correct
  */
 
 import { test, expect } from '@playwright/test';
@@ -35,6 +65,7 @@ test.describe('Product listing tests', () => {
   });
 
   test('Check products on all menu pages', async ({ page }) => {
+
     // Initialize pages and components
     const homePage = new HomePage(page);
     const menu = new MenuComponent(page);
@@ -78,9 +109,9 @@ test.describe('Product listing tests', () => {
     const noveltiesPage = new NoveltiesPage(page);
     await noveltiesPage.verifyProductsAreDisplayed();
 
-    // 8. OTHERS
-    await menu.navigateToOther();
-    const othersPage = new OthersPage(page);
-    await othersPage.verifyProductsAreDisplayed();
+    // 8. Other menu verification
+    const menuComponent = new MenuComponent(page);
+    await menuComponent.hoverOthersMenu();
+    await menuComponent.verifyOthersSubmenuItems();
   });
 });

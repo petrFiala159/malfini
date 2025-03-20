@@ -72,4 +72,14 @@ export class Button  extends BaseElement  {
         const style = this.element.getAttribute('style');
         return style
     }
+
+    async hover(options?: {
+        force?: boolean;
+        modifiers?: Array<'Alt'|'Control'|'Meta'|'Shift'>;
+        position?: { x: number; y: number; };
+        timeout?: number;
+        trial?: boolean;
+    }): Promise<void> {
+        await this.element.hover(options);
+    }
 }

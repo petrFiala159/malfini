@@ -7,15 +7,24 @@ export default defineConfig({
   testDir: './tests',
   //Paraleizace
   fullyParallel: Env.Workers > 1 ? true : false,
-    retries: Env.Retries,
-    workers: Env.Workers == 0 ? undefined : Env.Workers,
+  retries: Env.Retries,
+  workers: Env.Workers == 0 ? undefined : Env.Workers,
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html'], // generates HTML report
+    ['list'], // shows test results in console
+    ['junit', { outputFile: 'test-results/junit-results.xml' }] // generates JUnit XML report
+  ],
   outputDir: './test-results', // nastavení vlastního umístění pro reporty
-    use: {
+  use: {
     baseURL: Env.HomePageUrl,
     trace: 'on',
+  },
+
+  reportSlowTests: {
+    max: 5,
+    threshold: 15000
   },
 
   projects: [
