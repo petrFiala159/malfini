@@ -1,4 +1,5 @@
 export class Env {
+    public static readonly BasePageUrl: string = process.env.BasePageUrl;
     public static readonly HomePageUrl: string = process.env.HomePageUrl;
     public static readonly Email: string = process.env.Email;
     public static readonly Password: string = process.env.Password;
