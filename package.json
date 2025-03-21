@@ -15,6 +15,9 @@
     
     "Malfini_tests_PROD": "_____________________________________________________________________________________________________________",
     "goToMalfiniPageAndCheckListing": "env-cmd -r ./.env-cmdrc.json -e PROD_Malfini npx playwright test malfini_listing_check.spec.ts --headed --project=chromium",
+    "searchAndValidateSearchedResult": "env-cmd -r ./.env-cmdrc.json -e PROD_Malfini npx playwright test search.spec.ts --headed --project=chromium",
+    "LoginToApp": "env-cmd -r ./.env-cmdrc.json -e PROD_Malfini npx playwright test login.spec.ts --headed --project=chromium",
+
     "END_Malfini_tests_PROD": "_____________________________________________________________________________________________________________"
   },
   "keywords": [],

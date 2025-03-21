@@ -1,24 +1,51 @@
 import { Page, Locator, expect } from "@playwright/test";
 import { BaseElement } from "../base.element";
 import { generateTown, generateGermanTown } from "../../assets/addresses";
+
+//Import of translations
+import { SEARCH_BUTTON_LABELS } from "../../assets/translations";
+
 export class AutocompleteDropdown extends BaseElement {
-//clear and unify it !!!
     readonly exitIconSelector: string;
+    readonly searchButtonSelector: string;  // Added selector for search button
+
     constructor(locator: Locator) {
-      super(locator);  // Initialize with the BaseElement constructor
-      this.exitIconSelector = '[data-mat-icon-name="x"]'
-  }
+        super(locator);
+        this.exitIconSelector = '[data-mat-icon-name="x"]';
+        this.searchButtonSelector = 'button.Button--primary';  // Define search button selector
+    }
+
     // Method to input text and select an option in the autocomplete dropdown by text
-    async fillAndSelectOption(page: Page, text: string, searchOption: string) {
-        //const autocompleteElem = this.element.getByRole('textbox', { name: `${textBox}`})
-        const autocompleteElem = this.element
-        await autocompleteElem.click({force: true, clickCount: 2}); // Open the dropdown if necessary
-        await autocompleteElem.clear(); //to be sure the field is empty
+    async fillAndSelectOption(text: string, searchOption: string) {
+        const autocompleteElem = this.element;
+        const page = autocompleteElem.page(); // Get the page instance from element
+
+        await autocompleteElem.click({ force: true, clickCount: 2 }); // Click into the field
+        await autocompleteElem.clear(); // Ensure the field is empty
         await autocompleteElem.fill(text); // Type the text in the input field
-        await page.waitForSelector('[role="option"]')
-        const option =  page.getByRole('option', { name: `${searchOption}`}).nth(0)
-        await expect(option).toBeVisible()
-        await option.click()
+
+        // Click on the search button to trigger the dropdown
+        await this.clickSearchButton(page);
+
+        // Wait for the dropdown to appear with the corrected selector
+        const dropdown = page.locator('li.HeaderControl__search-li');
+        await expect(dropdown.first()).toBeVisible();
+
+        // Locate the correct option in the dropdown and click it
+        const option = page.locator('li.HeaderControl__search-li a span', { hasText: searchOption }).first();
+        await expect(option).toBeVisible();
+        await option.click();
+    }
+
+    async clickSearchButton(page: Page) {
+        for (const label of SEARCH_BUTTON_LABELS) {
+            const button = page.locator(`button.Button--primary`, { hasText: label });
+            if (await button.count() > 0) {
+                await button.click();
+                return;
+            }
+        }
+        throw new Error("Search button not found in any supported language.");
     }
 
     async clearAutocomplete() {
